@@ -14,7 +14,7 @@ let glitches = [];
 let cnv;
 
 function setup() {
-  cnv = createCanvas(windowHeight, windowHeight);
+  cnv = createCanvas(3860, 3860);
 
   colorMode(HSB, 360, 100, 100, 100);
   angleMode(DEGREES);
@@ -24,7 +24,7 @@ function setup() {
   radInc = random(2);
   angInc = random(5);
   for (let i = 0; i < 20; i++){
-    glitches[i] = new Glitch(random(width), random(height), random(width), random(15,20));
+    glitches[i] = new Glitch(random(width), random(height), random(width), random(50,100));
   }
 }
 
@@ -45,39 +45,39 @@ function draw() {
   translate(width/2, height/2);
   noFill();
   // strokeWeight(random(1,10));
-  strokeWeight(10);
+  strokeWeight(25);
   // stroke(180, random(100), tone);
 
-  triangle(random(-100, 100), -300, 300, random(100, 400), -300, random(100, 400));
+  triangle(random(-500, 500), -1500, 1500, random(500, 2000), -1500, random(500, 2000));
   pop();
   
 
   //Spirals
   //change
-  radInc = random(2);
-  angInc = random(5);
+  radInc = random(4);
+  angInc = random(10);
   //spiral 1
   push();
-  translate(width/2, height/2-50);
+  translate(width/2, height/2-400);
   spiral();
   pop();
 
   //spiral 2
   push();
-  translate(width*.35, height/2+150);
+  translate(width*.35, height/2+1000);
   spiral();
   pop();
 
   //spiral 3
   push();
-  translate(width*.65, height/2+150);
+  translate(width*.65, height/2+1000);
   spiral();
   pop();
 
 }
   
 function spiral(){
-  for (let i = 0; i < 200; i++){
+  for (let i = 0; i < 500; i++){
   //   radInc = random(2);
   // angInc = random(5);
     push();
@@ -85,7 +85,7 @@ function spiral(){
     angle += angInc;
     radius += radInc;
     // stroke(random(300, 360), 100, tone);
-    strokeWeight(random(5,15));
+    strokeWeight(random(15,45));
     
     // ellipse(radius,spot,random(5,10), random(5,10));
     point(radius,spot);
@@ -109,7 +109,7 @@ class Glitch{
     this.x = random(width);
     this.y = random(height);
     this.wid = random(width);
-    this.high = random(10,20);
+    this.high = random(50,100);
   }
   show(){
     //noStroke();
