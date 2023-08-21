@@ -14,8 +14,8 @@ let glitches = [];
 let cnv;
 
 function setup() {
-  cnv = createCanvas(3860, 3860);
-
+  //cnv = createCanvas(3860, 3860);
+  createCanvas(windowHeight, windowHeight)
   colorMode(HSB, 360, 100, 100, 100);
   angleMode(DEGREES);
   background(0);
@@ -24,14 +24,14 @@ function setup() {
   radInc = random(2);
   angInc = random(5);
   for (let i = 0; i < 20; i++){
-    glitches[i] = new Glitch(random(width), random(height), random(width), random(50,100));
+    glitches[i] = new Glitch(random(width), random(height), random(width), random(1,10));
   }
 }
 
 function draw() {
   background(255);
-  fill(0);
-  stroke(0);
+  // fill(0);
+  // stroke(0);
   //glitches
   for(let i = 0; i < glitches.length; i++){
     glitches[i].show();
@@ -44,9 +44,9 @@ function draw() {
   push();
   translate(width/2, height/2);
   noFill();
-  // strokeWeight(random(1,10));
-  strokeWeight(25);
-  // stroke(180, random(100), tone);
+  strokeWeight(random(1,10));
+  // strokeWeight(25);
+  stroke(180, random(100), tone);
 
   triangle(random(-500, 500), -1500, 1500, random(500, 2000), -1500, random(500, 2000));
   pop();
@@ -58,19 +58,19 @@ function draw() {
   angInc = random(10);
   //spiral 1
   push();
-  translate(width/2, height/2-400);
+  translate(width/2, height/2-100);
   spiral();
   pop();
 
   //spiral 2
   push();
-  translate(width*.35, height/2+1000);
+  translate(width*.35, height/2+250);
   spiral();
   pop();
 
   //spiral 3
   push();
-  translate(width*.65, height/2+1000);
+  translate(width*.65, height/2+250);
   spiral();
   pop();
 
@@ -78,14 +78,14 @@ function draw() {
   
 function spiral(){
   for (let i = 0; i < 500; i++){
-  //   radInc = random(2);
-  // angInc = random(5);
+    radInc = random(2);
+  angInc = random(5);
     push();
     rotate(angle);
     angle += angInc;
     radius += radInc;
-    // stroke(random(300, 360), 100, tone);
-    strokeWeight(random(15,45));
+    stroke(random(300, 360), 100, tone);
+    strokeWeight(random(1,10));
     
     // ellipse(radius,spot,random(5,10), random(5,10));
     point(radius,spot);
@@ -109,13 +109,13 @@ class Glitch{
     this.x = random(width);
     this.y = random(height);
     this.wid = random(width);
-    this.high = random(50,100);
+    this.high = random(1,10);
   }
   show(){
     //noStroke();
     //noFill();
-    // stroke(70, 100, 100);
-    // fill(70, 100, 100, random(100));
+    stroke(70, 100, 100);
+    fill(70, 100, 100, random(100));
     rect(this.x, this.y, this.wid, this.high);
   }
 }
